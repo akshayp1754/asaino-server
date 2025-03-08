@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=asaino
+      - POSTGRES_USER=akshay
+      - POSTGRES_PASSWORD=akshay1754
+    networks:
+      - my_network
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - my_network
+
+networks:
+  my_network:
